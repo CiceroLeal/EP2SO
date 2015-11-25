@@ -1,14 +1,14 @@
 import java.util.Random;
 
-public class ExecutaThread {
+public class ExecutaThread2 {
 	Random rng;
-	Fio[] AllMyFios = new Fio[100];
+	Fio2[] AllMyFios = new Fio2[100];
 	boolean rc = true;
 	boolean mutex = true;
 	
-	public ExecutaThread(TextWriter esc, int leitor){
+	public ExecutaThread2(TextWriter esc, int leitor){
 		rng= new Random();
-		RegiaoCritica rc = new RegiaoCritica();
+		RegiaoCritica2 rc = new RegiaoCritica2();
 		int pos;
 		int LouR;
 		int leitura;
@@ -24,14 +24,16 @@ public class ExecutaThread {
 			while(AllMyFios[pos] != null){
 				pos = rng.nextInt(100);
 			}
-			Fio aux = new Fio(LouR,leitura, rc);
+			Fio2 aux = new Fio2(LouR,leitura, rc);
 			AllMyFios[pos]=aux;
+			
 			leitor--;
+			
 		}
 		long inicio = System.currentTimeMillis();
 			Executa();
 		long fim = System.currentTimeMillis();
-		esc.escrever_arq_fim(fim-inicio+"\n", "src\\logComLE"+index+".txt");
+		esc.escrever_arq_fim(fim-inicio+"\n", "src\\logSemLE"+index+".txt");
 	}
 	public void Executa(){
 		for(int i = 0; i<100; i++){

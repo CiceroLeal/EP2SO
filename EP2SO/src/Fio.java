@@ -35,7 +35,7 @@ public class Fio extends Thread {
 					
 					rc.Mutex().acquire();
 						rc.setRc(rc.getRc() - 1);
-						if(rc.getRc() == 0) rc.Bd().release();;
+						if(rc.getRc() == 0) rc.Bd().release();
 					rc.Mutex().release();
 				}catch(Exception e){
 					e.printStackTrace();
