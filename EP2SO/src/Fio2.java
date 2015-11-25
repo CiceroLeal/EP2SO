@@ -16,15 +16,25 @@ public class Fio2 extends Thread {
 		int p;
 		for(int i = 0; i < 100; i++){
 			p = rng.nextInt(100);
-			try{
-				rc.Mutex().acquire();
-				
-				palavraLida = Main.bd[p];
-				
-				rc.Mutex().release();
-			}catch(Exception e){
-				e.printStackTrace();
-			}		
+			if(funcaoLeitor == true){
+				try{
+					rc.Mutex().acquire();
+						Main.bd[p]= "MODIFICADO";
+					rc.Mutex().release();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}else{
+				try{
+					rc.Mutex().acquire();
+					
+					palavraLida = Main.bd[p];
+					
+					rc.Mutex().release();
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }
