@@ -6,13 +6,12 @@ public class ExecutaThread2 {
 	boolean rc = true;
 	boolean mutex = true;
 	
-	public ExecutaThread2(TextWriter esc, int leitor){
+	public ExecutaThread2(int leitor){
 		rng= new Random();
 		RegiaoCritica2 rc = new RegiaoCritica2();
 		int pos;
 		int LouR;
 		int leitura;
-		int index = leitor;
 		for(int i=0; i<100; i++){
 			if(leitor >= 0){
 				LouR = 0;
@@ -33,7 +32,7 @@ public class ExecutaThread2 {
 		long inicio = System.currentTimeMillis();
 			Executa();
 		long fim = System.currentTimeMillis();
-		esc.escrever_arq_fim(fim-inicio+"\n", "src\\logSemLE"+index+".txt");
+		Main.tempoSemLE += fim-inicio;
 	}
 	public void Executa(){
 		for(int i = 0; i<100; i++){
