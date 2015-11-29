@@ -12,6 +12,9 @@ public class ExecutaThread {
 		int pos;
 		int LouR;
 		int leitura;
+		
+		//cria 100 threads de acordo com a quantidade de leitores
+		//coloca as threads em posições aleatorias do arranjo
 		for(int i=0; i<100; i++){
 			if(leitor > 0){
 				LouR = 0;
@@ -27,17 +30,22 @@ public class ExecutaThread {
 			AllMyFios[pos]=aux;
 			leitor--;
 		}
+		//pega o tempo que a execução demora
 		long inicio = System.currentTimeMillis();
 			Executa();
 		long fim = System.currentTimeMillis();
-		Main.tempoComLE += fim-inicio;
+		
+		//grava o tempo que demorou
+		Main.tempoComLE += (fim-inicio);
 	}
 	public void Executa(){
+		
+		//executa as 100 threads
 		for(int i = 0; i<100; i++){
 			AllMyFios[i].start();
 			if (AllMyFios[i].isAlive ())
 		        try{
-		            Thread.sleep (1); //Bota o fio pra dormir boa noite doce fio. s2
+		            Thread.sleep (1); //Bota o fio pra dormir boa noite doce fio. ZzZ
 		        }
 		        catch (InterruptedException e){
 		        	e.printStackTrace();

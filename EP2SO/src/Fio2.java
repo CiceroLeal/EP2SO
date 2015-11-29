@@ -14,8 +14,11 @@ public class Fio2 extends Thread {
 	public void run(){
 		Random rng = new Random();
 		int p;
+		
+		//executa 100 operações de leitura ou escrita na base de dados
 		for(int i = 0; i < 100; i++){
 			p = rng.nextInt(100);
+			//se for leitor bloqueia a base para leitores e escritores e muda a palavra
 			if(funcaoLeitor == true){
 				try{
 					rc.Mutex().acquire();
@@ -26,6 +29,7 @@ public class Fio2 extends Thread {
 				}
 			}else{
 				try{
+					//se for escritor bloqueia a base para leitores e escritores e lê a palavra
 					rc.Mutex().acquire();
 					
 					palavraLida = Main.bd[p];

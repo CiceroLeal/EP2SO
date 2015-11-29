@@ -12,6 +12,8 @@ public class ExecutaThread2 {
 		int pos;
 		int LouR;
 		int leitura;
+		
+		//cria 100 threads
 		for(int i=0; i<100; i++){
 			if(leitor >= 0){
 				LouR = 0;
@@ -29,12 +31,14 @@ public class ExecutaThread2 {
 			leitor--;
 			
 		}
+		// conta o tempo de execução
 		long inicio = System.currentTimeMillis();
 			Executa();
 		long fim = System.currentTimeMillis();
-		Main.tempoSemLE += fim-inicio;
+		Main.tempoSemLE += (fim-inicio);
 	}
 	public void Executa(){
+		//executa as 100 threads
 		for(int i = 0; i<100; i++){
 			AllMyFios[i].start();
 			if (AllMyFios[i].isAlive ())
